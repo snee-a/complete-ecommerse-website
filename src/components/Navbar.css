@@ -1,0 +1,82 @@
+.glass-navbar {
+  position: fixed;
+  top: 20px; /* space from top */
+  left: 20px; /* space from left */
+  right: 20px; /* space from right */
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  background: rgba(0, 0, 0, 0.2); /* transparent black glass effect */
+  backdrop-filter: blur(10px);
+  border-radius: 12px; /* rounded corners */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* entrance animation */
+  animation: slideFadeDown 0.8s ease-out forwards;
+}
+
+@keyframes slideFadeDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+/* Left logo */
+.nav-left {
+  flex: 1;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+/* Center links */
+.nav-center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.nav-center a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.nav-center a:hover {
+  color: #ffb3b3;
+}
+
+/* Right button */
+.nav-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-button {
+  background-color: #980815;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #c91125;
+  transform: scale(1.05);
+}

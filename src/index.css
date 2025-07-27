@@ -1,0 +1,48 @@
+/* src/index.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* solid black background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+  background-image: 
+    linear-gradient(to bottom, rgba(152, 8, 21, 0.8), rgba(0, 0, 0, 0.9)),
+    url('/bed33415-8d2b-466b-98cd-4c9bf43dfd91.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(1.1); /* Slightly bright but not overexposed */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 30px; /* Space for sticky navbar */
+  color: white;
+  font-family: sans-serif;
+}
+
+.hero-content {
+  margin-top: 200px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+}

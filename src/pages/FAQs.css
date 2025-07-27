@@ -1,0 +1,59 @@
+.faq-container {
+  background-color: #1e1e1e;
+  padding: 50px 20px;
+  color: white;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.faq-heading {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.faq-item {
+  background-color: #2c2c2c;
+  margin: 15px 0;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.faq-arrow {
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  margin-top: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.faq-container {
+  margin-top: 100px; /* Adjust this value if your navbar height is different */
+  padding: 20px;
+  color: white;
+}
