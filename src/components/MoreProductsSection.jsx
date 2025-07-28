@@ -174,13 +174,15 @@ const MoreProductsSection = () => {
               >
                 {(categoryProducts[category] || []).map((product) => (
                   <ProductCard
-                    key={product.id}
-                    id={product.id} // ✅ FIXED: pass id
-                    image={product.thumbnail}
-                    title={product.title}
-                    description={product.description}
-                    small
-                  />
+  key={product.id}
+  id={product.id}
+  image={product.thumbnail}
+  title={product.title}
+  description={product.description}
+  price={product.price}
+  small
+/>
+
                 ))}
               </Box>
             </Box>

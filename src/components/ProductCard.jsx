@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const MotionCard = motion(Card);
 
-const ProductCard = ({ id, image, title, description, small }) => {
+const ProductCard = ({ id, image, title, description, price, small }) => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const ProductCard = ({ id, image, title, description, small }) => {
         boxShadow: 3,
         cursor: 'pointer',
       }}
-      onClick={() => navigate(`/product/${id}`)} // ✅ id will be correct now
+      onClick={() => navigate(`/product/${id}`)}
     >
       <CardMedia
         component="img"
@@ -45,6 +45,10 @@ const ProductCard = ({ id, image, title, description, small }) => {
         <Typography variant="body2" color="text.secondary" noWrap>
           {description}
         </Typography>
+        <Typography variant="h6" color="primary">
+          ₹{price}
+        </Typography>
+        
       </CardContent>
     </MotionCard>
   );

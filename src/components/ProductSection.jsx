@@ -43,13 +43,15 @@ const ProductSection = () => {
         }}
       >
         {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            id={product.id} // ✅ This was missing
-            image={product.thumbnail}
-            title={product.title}
-            description={product.description}
-          />
+       <ProductCard
+  key={product.id}
+  id={product.id}
+  image={product.thumbnail}
+  title={product.title}
+  description={product.description}
+  price={product.price}
+/>
+
         ))}
       </Box>
     </Box>

@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import FAQs from './pages/FAQs';
-
+import Footer from './components/Footer';
 
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
@@ -31,7 +31,7 @@ function App() {
               <HeroSection />
               <ProductSection />
               <MoreProductsSection />
-              
+           
             </>
           }
         />
@@ -45,6 +45,7 @@ function App() {
 
 
       </Routes>
+      <Footer/>
     </>
   );
 }

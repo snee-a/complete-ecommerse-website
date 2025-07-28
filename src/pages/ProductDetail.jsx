@@ -150,12 +150,14 @@ const ProductDetail = () => {
         <Grid container spacing={2}>
           {categoryProducts.map(p => (
             <Grid item xs={12} sm={6} md={3} key={p.id}>
-              <ProductCard
-                id={p.id}
-                image={p.thumbnail}
-                title={p.title}
-                description={p.description}
-              />
+           <ProductCard
+  id={p.id}
+  image={p.thumbnail}
+  title={p.title}
+  description={p.description}
+  price={p.price}
+/>
+
             </Grid>
           ))}
         </Grid>

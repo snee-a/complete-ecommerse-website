@@ -1,55 +1,78 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import ProductCard from "../components/ProductCard"; // You must already have this
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import {
+  Box,
+  Grid,
+  Typography,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from '@mui/material';
+import ProductCard from '../components/ProductCard';
 
-const CategoryProducts = () => {
-  const { category } = useParams(); // from URL: /category/:category
+const CategoryPage = () => {
+  const { category } = useParams();
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [filtered, setFiltered] = useState([]);
+  const [sortOrder, setSortOrder] = useState('');
 
   useEffect(() => {
-    const fetchCategoryProducts = async () => {
-      try {
-        const res = await fetch(`https://dummyjson.com/products/category/${category}`);
-        if (!res.ok) throw new Error("Failed to fetch products");
-        const data = await res.json();
-        setProducts(data.products); // Note: dummyjson uses 'products' key
-      } catch (error) {
-        console.error("Error:", error);
-        setProducts([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchCategoryProducts();
+    fetch(`https://fakestoreapi.com/products/category/${category}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+        setFiltered(data);
+      })
+      .catch((err) => console.error('Error:', err));
   }, [category]);
 
-  return (
-    <div style={{ padding: "2rem" }}>
-      <h2 style={{ marginBottom: "1rem", fontSize: "2rem" }}>
-        Products in "{category}"
-      </h2>
+  useEffect(() => {
+    let sorted = [...products];
+    if (sortOrder === 'low') {
+      sorted.sort((a, b) => a.price - b.price);
+    } else if (sortOrder === 'high') {
+      sorted.sort((a, b) => b.price - a.price);
+    }
+    setFiltered(sorted);
+  }, [sortOrder, products]);
 
-      {loading ? (
-        <p>Loading...</p>
-      ) : products.length === 0 ? (
-        <p>No products found in this category.</p>
-      ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-            gap: "1rem",
-          }}
-        >
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      )}
-    </div>
+  return (
+    <Box sx={{ p: 3 }}>
+      <Typography variant="h4" gutterBottom>
+        Products in {category}
+      </Typography>
+
+      {/* Filter/Sort */}
+      <Box sx={{ mb: 2, maxWidth: 200 }}>
+        <FormControl fullWidth>
+          <InputLabel>Sort by Price</InputLabel>
+          <Select
+            value={sortOrder}
+            label="Sort by Price"
+            onChange={(e) => setSortOrder(e.target.value)}
+          >
+            <MenuItem value="">None</MenuItem>
+            <MenuItem value="low">Low to High</MenuItem>
+            <MenuItem value="high">High to Low</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+
+      {/* Products Grid */}
+      <Grid container spacing={3}>
+        {filtered.length > 0 ? (
+          filtered.map((product) => (
+            <Grid item xs={12} sm={6} md={4} key={product.id}>
+              <ProductCard product={product} />
+            </Grid>
+          ))
+        ) : (
+          <Typography>No products found in this category.</Typography>
+        )}
+      </Grid>
+    </Box>
   );
 };
 
-export default CategoryProducts;
+export default CategoryPage;
